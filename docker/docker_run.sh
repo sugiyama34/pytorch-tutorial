@@ -1,4 +1,5 @@
 GPU_ARG=""
+NAME_ARG=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in 
@@ -13,6 +14,14 @@ while [[ $# -gt 0 ]]; do
         continue
       fi
       GPU_ARG="--gpus \"device=$2\""
+      shift 2
+      ;;
+    --name|-n)
+      if [[ -z "$2" ]]; then
+        echo "Error: --name requires a value." >&2
+        exit 1
+      fi
+      NAME_ARG="--name $2"
       shift 2
       ;;
     *)
@@ -31,5 +40,6 @@ docker run -it \
   -e TZ=Asia/Tokyo \
   -w /workspace \
   -v "$(pwd)":/workspace \
+  $NAME_ARG \
   pytorch_tutorial
 
