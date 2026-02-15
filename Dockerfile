@@ -1,5 +1,6 @@
-FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu24.04
-ARG PYTHON_VERSION=3.12
+FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu22.04
+
+ARG PYTHON_VERSION=3.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C.UTF-8
